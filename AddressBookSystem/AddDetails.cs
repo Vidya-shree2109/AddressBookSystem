@@ -75,5 +75,68 @@ namespace AddressBookSystem
                 count++;
             }
         }
+        public void EditContact()
+        {
+            foreach (var contact in address_book)
+            {
+                Console.WriteLine("\nEDITING AN EXISTING CONTACT BY NAME -->");
+                Console.Write("\nEnter the name to edit a contact : ");
+                string name = Console.ReadLine();
+                if (contact.first_name.Equals(name))
+                {
+                    Console.WriteLine("\nEnter the option to edit\n1.FirstName\n2.LastName\n3.Address\n4.Email\n5.PhoneNumber\n6.City\n7.State\n8.ZipCode\n");
+                    int option = Convert.ToInt32(Console.ReadLine());
+                    switch (option)
+                    {
+                        case 1:
+                            Console.Write("Enter the new First Name : ");
+                            string new_first_name = Console.ReadLine();
+                            contact.first_name = new_first_name;
+                            break;
+                        case 2:
+                            Console.Write("Enter the new Last Name : ");
+                            string new_last_name = Console.ReadLine();
+                            contact.last_name = new_last_name;
+                            break;
+                        case 3:
+                            Console.Write("Enter the new Address : ");
+                            string new_address = Console.ReadLine();
+                            contact.address = new_address;
+                            break;
+                        case 4:
+                            Console.Write("Enter the new Email : ");
+                            string new_email = Console.ReadLine();
+                            contact.email = new_email;
+                            break;
+                        case 5:
+                            Console.Write("Enter the new Phone Number : ");
+                            string new_phone_number = Console.ReadLine();
+                            contact.phone_number = new_phone_number;
+                            break;
+                        case 6:
+                            Console.Write("Enter the new City : ");
+                            string new_city = Console.ReadLine();
+                            contact.city = new_city;
+                            break;
+                        case 7:
+                            Console.Write("Enter the new State : ");
+                            string new_state = Console.ReadLine();
+                            contact.state = new_state;
+                            break;
+                        case 8:
+                            Console.Write("Enter the new Zip Code : ");
+                            string new_zip_code = Console.ReadLine();
+                            contact.zip_code = new_zip_code;
+                            break;
+                    }
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("\nENTERED NAME DOESNOT EXIST.. !");
+                }
+            }
+            DisplayInfo();
+        }
     }
 }
