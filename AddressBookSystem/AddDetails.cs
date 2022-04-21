@@ -14,7 +14,6 @@ namespace AddressBookSystem
         {
             Contact contact1 = new Contact()
             {
-                id = "001",
                 first_name = "Vidya",
                 last_name = "Shree",
                 address = "Maruthi Nagar",
@@ -26,7 +25,6 @@ namespace AddressBookSystem
             };
             Contact contact2 = new Contact()
             {
-                id = "002",
                 first_name = "Neha",
                 last_name = "Sharma",
                 address = "Jay Nagar",
@@ -39,11 +37,9 @@ namespace AddressBookSystem
             address_book.Add(contact1);
             address_book.Add(contact2);
         }
-        public void AddContacts()
+        public void AddContacts(Contact contact)
         {
             Console.WriteLine("\nENTER THE PERSONAL DETAILS -->\n");
-            Console.Write("ID: ");
-            contact.id = Console.ReadLine();
             Console.Write("First Name : ");
             contact.first_name = Console.ReadLine();
             Console.Write("Last Name : ");
@@ -60,13 +56,14 @@ namespace AddressBookSystem
             contact.state = Console.ReadLine();
             Console.Write("Zip Code : ");
             contact.zip_code = Console.ReadLine();
+            address_book.Add(contact);
         }
         public void DisplayInfo()
         {
+            int count = 1;
             foreach (var contact in address_book)
             {
-                Console.WriteLine("\n--------PERSONAL DETAILS--------\n");
-                Console.WriteLine("ID :" + contact.id);
+                Console.WriteLine("\n--------PERSONAL DETAILS OF CONTACT {0}--------\n",count);
                 Console.WriteLine("First Name :" + contact.first_name);
                 Console.WriteLine("Last Name :" + contact.last_name);
                 Console.WriteLine("Address :" + contact.address);
@@ -75,6 +72,7 @@ namespace AddressBookSystem
                 Console.WriteLine("City :" + contact.city);
                 Console.WriteLine("State :" + contact.state);
                 Console.WriteLine("Zip Code :" + contact.zip_code);
+                count++;
             }
         }
     }

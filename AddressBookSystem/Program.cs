@@ -18,14 +18,14 @@ namespace AddressBookSystem
                 switch (option)
                 {
                     case 1:
-                        add_contact.AddContacts();
+                        add_contact.AddContacts(contact);
                         break;
                     case 2:
                         add_contact.DisplayInfo();
                         break;
                     case 3:
                         finish = false;
-                        Console.WriteLine("END OF THE PROGRAM ..!");
+                        Console.WriteLine("\nEND OF THE PROGRAM ..!");
                         break;
                 }
             }
