@@ -8,10 +8,42 @@ namespace AddressBookSystem
 {
     public class AddDetails
     {
+        List<Contact> address_book = new List<Contact>();
         Contact contact = new Contact();
+        public AddDetails()
+        {
+            Contact contact1 = new Contact()
+            {
+                id = "001",
+                first_name = "Vidya",
+                last_name = "Shree",
+                address = "Maruthi Nagar",
+                email = "vidyashree2109@gmail.com",
+                phone_number = "9620796710",
+                city = "Tumkur",
+                state = "Karnataka",
+                zip_code = "572102"
+            };
+            Contact contact2 = new Contact()
+            {
+                id = "002",
+                first_name = "Neha",
+                last_name = "Sharma",
+                address = "Jay Nagar",
+                email = "neha786@gmail.com",
+                phone_number = "7259925439",
+                city = "Bangalore",
+                state = "Karnataka",
+                zip_code = "560001"
+            };
+            address_book.Add(contact1);
+            address_book.Add(contact2);
+        }
         public void AddContacts()
         {
-            Console.WriteLine("ENTER THE PERSONAL DETAILS -->\n");
+            Console.WriteLine("\nENTER THE PERSONAL DETAILS -->\n");
+            Console.Write("ID: ");
+            contact.id = Console.ReadLine();
             Console.Write("First Name : ");
             contact.first_name = Console.ReadLine();
             Console.Write("Last Name : ");
@@ -31,15 +63,19 @@ namespace AddressBookSystem
         }
         public void DisplayInfo()
         {
-            Console.WriteLine("\n--------PERSONAL DETAILS--------\n");
-            Console.WriteLine("First Name :" + contact.first_name);
-            Console.WriteLine("Last Name :" + contact.last_name);
-            Console.WriteLine("Address :" + contact.address);
-            Console.WriteLine("Email :" + contact.email);
-            Console.WriteLine("Phone Number :" + contact.phone_number);
-            Console.WriteLine("City :" + contact.city);
-            Console.WriteLine("State :" + contact.state);
-            Console.WriteLine("Zip Code :" + contact.zip_code);
+            foreach (var contact in address_book)
+            {
+                Console.WriteLine("\n--------PERSONAL DETAILS--------\n");
+                Console.WriteLine("ID :" + contact.id);
+                Console.WriteLine("First Name :" + contact.first_name);
+                Console.WriteLine("Last Name :" + contact.last_name);
+                Console.WriteLine("Address :" + contact.address);
+                Console.WriteLine("Email :" + contact.email);
+                Console.WriteLine("Phone Number :" + contact.phone_number);
+                Console.WriteLine("City :" + contact.city);
+                Console.WriteLine("State :" + contact.state);
+                Console.WriteLine("Zip Code :" + contact.zip_code);
+            }
         }
     }
 }
