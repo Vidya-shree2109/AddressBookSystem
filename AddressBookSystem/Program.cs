@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using AddressBookSystem;
+
+Console.WriteLine("----------WELCOME TO ADDRESS BOOK SYSTEM PROGRAM----------\n");
+AddDetails details = new AddDetails();
+details.AddContacts();
+details.DisplayInfo();
