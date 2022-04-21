@@ -64,14 +64,14 @@ namespace AddressBookSystem
             foreach (var contact in address_book)
             {
                 Console.WriteLine("\n--------PERSONAL DETAILS OF CONTACT {0}--------\n",count);
-                Console.WriteLine("First Name :" + contact.first_name);
-                Console.WriteLine("Last Name :" + contact.last_name);
-                Console.WriteLine("Address :" + contact.address);
-                Console.WriteLine("Email :" + contact.email);
-                Console.WriteLine("Phone Number :" + contact.phone_number);
-                Console.WriteLine("City :" + contact.city);
-                Console.WriteLine("State :" + contact.state);
-                Console.WriteLine("Zip Code :" + contact.zip_code);
+                Console.WriteLine("First Name : " + contact.first_name);
+                Console.WriteLine("Last Name : " + contact.last_name);
+                Console.WriteLine("Address : " + contact.address);
+                Console.WriteLine("Email : " + contact.email);
+                Console.WriteLine("Phone Number : " + contact.phone_number);
+                Console.WriteLine("City : " + contact.city);
+                Console.WriteLine("State : " + contact.state);
+                Console.WriteLine("Zip Code : " + contact.zip_code);
                 count++;
             }
         }
@@ -136,6 +136,24 @@ namespace AddressBookSystem
                     Console.WriteLine("\nENTERED NAME DOESNOT EXIST.. !");
                 }
             }
+            DisplayInfo();
+        }
+        public void DeleteContact()
+        {
+            Contact delete = new Contact();
+            Console.WriteLine("\nDELETING AN EXISTING CONTACT BY NAME -->");
+            Console.Write("\nEnter the name to delete a contact : ");
+            string name_to_delete = Console.ReadLine();
+            foreach (var contact in address_book)
+            {
+
+                if (contact.first_name.Equals(name_to_delete))
+                {
+                    delete = contact;
+                }
+            }
+            address_book.Remove(delete);
+            Console.WriteLine("\nContact Deleted.. !\n");
             DisplayInfo();
         }
     }
