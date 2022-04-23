@@ -10,6 +10,7 @@ namespace AddressBookSystem
     {
         List<Contact> address_book = new List<Contact>();
         Contact contact = new Contact();
+        Dictionary<string, List<Contact>> dict_name = new Dictionary<string, List<Contact>>();
         public AddDetails()
         {
             Contact contact1 = new Contact()
@@ -155,6 +156,29 @@ namespace AddressBookSystem
             address_book.Remove(delete);
             Console.WriteLine("\nContact Deleted.. !\n");
             DisplayInfo();
+        }
+        public void AddDictionary(string name)
+        {
+            if (dict_name == null)
+            {
+                dict_name.Add(name, address_book);
+            }
+            if (NameExists(name) == false)
+            {
+                dict_name.Add(name, address_book);
+            }
+            Console.WriteLine(dict_name);
+        }
+        public bool NameExists(string name)
+        {
+            foreach (var data in dict_name.Keys)
+            {
+                if (data.Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

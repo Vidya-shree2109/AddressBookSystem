@@ -8,7 +8,7 @@ namespace AddressBookSystem
         {
             Console.WriteLine("----------WELCOME TO ADDRESS BOOK SYSTEM PROGRAM----------\n");
             bool finish = true;
-            Console.WriteLine("Enter :\n1.Add Contact\n2.Display\n3.Edit Contact\n4.Delete Contact\n5.End Of Program");
+            Console.WriteLine("Enter :\n1.Display Contacts\n2.Edit Contact\n3.Delete Contact\n4.Add Multiple Contacts\n5.End Of Program");
             Contact contact = new Contact();
             AddDetails add_contact = new AddDetails();
             while (finish)
@@ -18,16 +18,18 @@ namespace AddressBookSystem
                 switch (option)
                 {
                     case 1:
-                        add_contact.AddContacts(contact);
-                        break;
-                    case 2:
                         add_contact.DisplayInfo();
                         break;
-                    case 3:
+                    case 2:
                         add_contact.EditContact();
                         break;
-                    case 4:
+                    case 3:
                         add_contact.DeleteContact();
+                        break;
+                    case 4:
+                        Console.Write("\nEnter the name to add data in Dictionary ");
+                        string dictionary_name = Console.ReadLine();
+                        add_contact.AddDictionary(dictionary_name);
                         break;
                     case 5:
                         finish = false;
