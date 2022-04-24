@@ -76,14 +76,11 @@ namespace AddressBookSystem
                 count++;
             }
         }
-        public void EditContact()
+        public void EditContact(string contact_name)
         {
-            foreach (var contact in address_book)
+            foreach (Contact contact in address_book)
             {
-                Console.WriteLine("\nEDITING AN EXISTING CONTACT BY NAME -->");
-                Console.Write("\nEnter the name to edit a contact : ");
-                string name = Console.ReadLine();
-                if (contact.first_name.Equals(name))
+                if (contact.first_name.Equals(contact_name))
                 {
                     Console.WriteLine("\nEnter the option to edit\n1.FirstName\n2.LastName\n3.Address\n4.Email\n5.PhoneNumber\n6.City\n7.State\n8.ZipCode\n");
                     int option = Convert.ToInt32(Console.ReadLine());
@@ -132,23 +129,16 @@ namespace AddressBookSystem
                     }
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("\nENTERED NAME DOESNOT EXIST.. !");
-                }
             }
+            Console.WriteLine("\nENTERED NAME DOESNOT EXIST.. !");
             DisplayInfo();
         }
-        public void DeleteContact()
+        public void DeleteContact(string name1)
         {
-            Contact delete = new Contact();
-            Console.WriteLine("\nDELETING AN EXISTING CONTACT BY NAME -->");
-            Console.Write("\nEnter the name to delete a contact : ");
-            string name_to_delete = Console.ReadLine();
-            foreach (var contact in address_book)
+            Contact delete = new Contact();  
+            foreach (Contact contact in address_book)
             {
-
-                if (contact.first_name.Equals(name_to_delete))
+                if (contact.first_name.Equals(name1))
                 {
                     delete = contact;
                 }
@@ -167,7 +157,29 @@ namespace AddressBookSystem
             {
                 dict_name.Add(name, address_book);
             }
-            Console.WriteLine(dict_name);
+        }
+        public void EditDictionary(string name1, string contact_name)
+        {
+            foreach (var data in dict_name)
+            {
+                if (dict_name.Keys.Equals(name1))
+                {
+                    address_book = data.Value;
+                    EditContact(contact_name);
+                }
+            }
+        }
+        public void DeleteDictionary(string name2)
+        {
+            foreach (var data in dict_name)
+            {
+                if (data.Key.Equals(name2))
+                {
+                    address_book = data.Value;
+                    DeleteContact(name2);
+                }
+            }
+            dict_name.Remove(name2);
         }
         public bool NameExists(string name)
         {
