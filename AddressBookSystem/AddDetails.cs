@@ -59,6 +59,22 @@ namespace AddressBookSystem
             contact.zip_code = Console.ReadLine();
             address_book.Add(contact);
         }
+        public void AddUniqueDetails(string firstName, string lastName)
+        {
+            foreach (Contact contact in address_book)
+            {
+                if (contact.first_name == firstName && contact.last_name == lastName)
+                {
+                    Console.WriteLine("\nYOU HAVE ENTERED DUPLICATE NAME !\n");
+                    Console.WriteLine("TRY WITH ANOTHER NAME .....\n");
+                    EditContact(firstName, lastName);
+                }
+                else
+                {
+                    DisplayInfo();
+                }
+            }
+        }
         public void DisplayInfo()
         {
             int count = 1;
@@ -76,11 +92,11 @@ namespace AddressBookSystem
                 count++;
             }
         }
-        public void EditContact(string contact_name)
+        public void EditContact(string firstName, string lastName)
         {
             foreach (Contact contact in address_book)
             {
-                if (contact.first_name.Equals(contact_name))
+                if (contact.first_name.Equals(firstName) && contact.last_name.Equals(lastName))
                 {
                     Console.WriteLine("\nEnter the option to edit\n1.FirstName\n2.LastName\n3.Address\n4.Email\n5.PhoneNumber\n6.City\n7.State\n8.ZipCode\n");
                     int option = Convert.ToInt32(Console.ReadLine());
@@ -165,7 +181,7 @@ namespace AddressBookSystem
                 if (dict_name.Keys.Equals(name1))
                 {
                     address_book = data.Value;
-                    EditContact(contact_name);
+                    EditContact(name1, contact_name);
                 }
             }
         }

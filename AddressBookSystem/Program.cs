@@ -8,7 +8,7 @@ namespace AddressBookSystem
         {
             Console.WriteLine("----------WELCOME TO ADDRESS BOOK SYSTEM PROGRAM----------\n");
             bool finish = true;
-            Console.WriteLine("Enter :\n1.Display Contacts\n2.Edit Contact\n3.Delete Contact\n4.Add data to dictionary\n5.Edit dictionary data\n6.Delete dictionary data\n7.End Of Program");
+            Console.WriteLine("Enter :\n1.Adding Details And Display\n2.Edit Contact\n3.Delete Contact\n4.Add data to dictionary\n5.Edit dictionary data\n6.Delete dictionary data\n7.End Of Program");
             Contact contact = new Contact();
             AddDetails address = new AddDetails();
             while (finish)
@@ -18,13 +18,20 @@ namespace AddressBookSystem
                 switch (option)
                 {
                     case 1:
-                        address.DisplayInfo();
+                        Console.WriteLine("\nADDING DETAILS TO CONTACT BY NAME -->");
+                        Console.WriteLine("Enter the first name : ");
+                        string firstName = Console.ReadLine();
+                        Console.WriteLine("Enter the last name : ");
+                        string lastName = Console.ReadLine();
+                        address.AddUniqueDetails(firstName, lastName);
                         break;
                     case 2:
                         Console.WriteLine("\nEDITING AN EXISTING CONTACT BY NAME -->");
-                        Console.Write("\nEnter the name to edit a contact : ");
-                        string name_to_edit = Console.ReadLine();
-                        address.EditContact(name_to_edit);
+                        Console.WriteLine("Enter the first name to edit : ");
+                        string firstNameForEdit = Console.ReadLine();
+                        Console.WriteLine("Enter the last name to edit : ");
+                        string lastNameForEdit = Console.ReadLine();
+                        address.EditContact(firstNameForEdit, lastNameForEdit);
                         break;
                     case 3:
                         Console.WriteLine("\nDELETING AN EXISTING CONTACT BY NAME -->");
