@@ -208,5 +208,16 @@ namespace AddressBookSystem
             }
             return false;
         }
+        public void SearchingPersonByCity(string cityName)
+        {
+            foreach (var list in address_book)
+            {
+                if (list.city.Equals(cityName))
+                {
+                    Console.WriteLine("\nPERSON FOUND WITH CITY NAME --> " + cityName + " !\n");
+                    Console.WriteLine(list.first_name + "\t" + list.last_name + "\t" + list.email + "\t" + list.phone_number + "\t" + list.city + "\t" + list.state + "\t" + list.zip_code);
+                }
+            }
+        }
     }
 }
