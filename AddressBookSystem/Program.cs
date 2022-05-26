@@ -6,9 +6,9 @@ namespace AddressBookSystem
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("----------WELCOME TO ADDRESS BOOK SYSTEM PROGRAM----------\n");
+            Console.WriteLine("\t\t\t\t\tWELCOME TO ADDRESS BOOK SYSTEM PROGRAM\t\t\t\t\t\n");
             bool finish = true;
-            Console.WriteLine("Enter :\n1.Adding Details And Display\n2.Display Details\n3.Edit Contact\n4.Delete Contact\n5.Add data to dictionary\n6.Edit dictionary data\n7.Delete dictionary data\n8.Search A Person By City\n9.End Of Program");
+            Console.WriteLine("Enter :\n1.Adding Details And Display\n2.Display Details\n3.Edit Contact\n4.Delete Contact\n5.Add data to dictionary\n6.Edit dictionary data\n7.Delete dictionary data\n8.Search A Person By City Or State Name\n9.View Person By City Or State Name\n10.End Of Program");
             Contact contact = new Contact();
             AddDetails address = new AddDetails();
             while (finish)
@@ -59,11 +59,18 @@ namespace AddressBookSystem
                         address.DeleteDictionary(deleteName);
                         break;
                     case 8:
-                        Console.Write("\nEnter The City Name To Search A Person : ");
-                        string cityName = Console.ReadLine();
-                        address.SearchingPersonByCity(cityName);
+                        Console.WriteLine("\nEnter The City Name And State Name To Search A Person : ");
+                        string cityNameForSearch = Console.ReadLine();
+                        string stateNameForSearch = Console.ReadLine();
+                        address.SearchContactByCityOrState(cityNameForSearch, stateNameForSearch);
                         break;
                     case 9:
+                        Console.WriteLine("\nEnter The City Name And State Name To View Persons : ");
+                        string cityNameForView = Console.ReadLine();
+                        string stateNameForView = Console.ReadLine();
+                        address.ViewPersonsByCityOrState(cityNameForView, stateNameForView);
+                        break;
+                    case 10:
                         finish = false;
                         Console.WriteLine("\nEND OF THE PROGRAM.. !");
                         break;

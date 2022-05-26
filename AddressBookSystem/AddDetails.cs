@@ -11,6 +11,9 @@ namespace AddressBookSystem
         List<Contact> address_book = new List<Contact>();
         Contact contact = new Contact();
         Dictionary<string, List<Contact>> dict_name = new Dictionary<string, List<Contact>>();
+        List<Contact> searchCity = new List<Contact>();
+        List<Contact> listForCity = new List<Contact>();
+        List<Contact> listForState = new List<Contact>();
         public AddDetails()
         {
             Contact contact1 = new Contact()
@@ -208,15 +211,26 @@ namespace AddressBookSystem
             }
             return false;
         }
-        public void SearchingPersonByCity(string cityName)
+        public void SearchContactByCityOrState(string cityName, string stateName)
         {
-            foreach (var list in address_book)
+            searchCity = address_book.FindAll(x => (x.city == cityName || x.state == stateName));
+            Console.WriteLine("\nPERSONS FOUND WITH ENTERED CITY/STATE NAME --> " + cityName + " AND " + stateName + " !\n");
+            foreach (Contact details in searchCity)
             {
-                if (list.city.Equals(cityName))
-                {
-                    Console.WriteLine("\nPERSON FOUND WITH CITY NAME --> " + cityName + " !\n");
-                    Console.WriteLine(list.first_name + "\t" + list.last_name + "\t" + list.email + "\t" + list.phone_number + "\t" + list.city + "\t" + list.state + "\t" + list.zip_code);
-                }
+                Console.WriteLine("First Name : " + details.first_name + "\n" + "Last Name : " + details.last_name + "\n" + "Email : " + details.email + "\n" + "Phone Number : " + details.phone_number + "\n" + "City : " + details.city + "\n" + "State : " + details.state + "\n" + "Zip Code : " + details.zip_code + "\n");
+            }
+        }
+        public void ViewPersonsByCityOrState(string cityName, string stateName)
+        {
+            listForCity = address_book.FindAll(x => (x.city == cityName));
+            foreach (Contact person in listForCity)
+            {
+                Console.WriteLine("\nPerson in {0} City is : {1}\n", cityName, person.first_name);
+            }
+            listForState = address_book.FindAll(x => (x.state == stateName));
+            foreach (Contact person in listForState)
+            {
+                Console.WriteLine("Person in {0} State is : {1}\n", stateName, person.first_name);
             }
         }
     }
